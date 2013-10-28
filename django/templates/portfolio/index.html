@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block navigation %}
+<ul>
+  {% for p in pages %}
+  <li><a href="{% url 'portfolio.views.page' p.short_name %}">{{p.page_title}}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}
+
+{% block content %}
+<div class="projectlist js-masonry" data-masonry-options='{ "itemSelector": ".project" }'>
+  {% for p in projects %}
+  <div class="project">
+    <div class="project_title">
+      {{p.project_title}}
+    </div>
+    <div class="project_summary">
+      {{p.frontpage_summary|safe}}
+      <a href="{% url 'project' p.short_name %}">Meer...</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

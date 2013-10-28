@@ -1,4 +1,5 @@
 Here are some gotchas:
 
+- apt-get python-dev before pip install pycrypto
 - apt-get postgres-...-dev before pip install pycopg2
-- For jpeg support, apt-get libjpeg-dev before pip installing django-ckeditor
+- apt-get libjpeg-dev before pip install django-ckeditor

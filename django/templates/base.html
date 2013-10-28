@@ -1,0 +1,34 @@
+{% load i18n %}
+{% load staticfiles %}
+<!doctype html>
+<html>
+  <head>
+    <title>
+      {% block title %}Monique Broekman{% endblock %}
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="{% static 'main.css' %}" type="text/css" />
+    {% block javascript %}
+    <script src="{% static 'masonry.pkgd.min.js' %}"></script>
+    {% endblock %}
+  </head>
+  <body>
+    {% block header %}
+    <div class="header js-masonry" data-masonry-options='{ "itemSelector": ".headerblock" }'>
+      <div class="logo headerblock">
+        <a href="/">Monique<br>Broekman</a>
+      </div>
+      <div class="navigation headerblock">
+        {% block navigation %}
+        {% endblock %}
+      </div>
+    </div>
+    {% endblock %}
+    {% block content %}
+    {% endblock %}
+    {% block footer %}
+    {% endblock %}
+  </body>
+</html>

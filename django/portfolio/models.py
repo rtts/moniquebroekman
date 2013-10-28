@@ -5,18 +5,21 @@ class Project(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     position = models.IntegerField()
-    shortname = models.SlugField()
-    title = models.CharField(max_length=255)
-    summary_pic = models.ImageField(upload_to='summary_pics')
-    summary_text = RichTextField()
-    content = RichTextField()
+    short_name = models.SlugField()
+    project_title = models.CharField(max_length=255)
+    frontpage_summary = RichTextField()
+    article_content = RichTextField()
     def __unicode__(self):
-        return self.title
+        return self.project_title
+    class Meta:
+        ordering = ["position"]
 
 class Page(models.Model):
     position = models.IntegerField()
-    shortname = models.SlugField()
-    title = models.CharField(max_length=255)
-    content = RichTextField()
+    short_name = models.SlugField()
+    page_title = models.CharField(max_length=255)
+    page_content = RichTextField()
     def __unicode__(self):
-        return self.title
+        return self.page_title
+    class Meta:
+        ordering = ["position"]

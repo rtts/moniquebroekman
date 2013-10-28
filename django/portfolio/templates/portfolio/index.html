@@ -1,0 +1,10 @@
+<html>
+  <body>
+    <dl>
+      {% for project in projects %}
+      <dt>{{ project.title }}</dt>
+      <dd>{{ project.content|safe }}</dd>
+      {% endfor %}
+    </dl>
+  </body>
+</html>

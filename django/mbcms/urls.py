@@ -3,12 +3,12 @@ from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.contrib import admin
 admin.autodiscover()
+import portfolio.views
 
 urlpatterns = patterns('',
-    # Examples:
-    (r'^ckeditor/', include('ckeditor.urls')),
-    # url(r'^$', 'mbcms.views.home', name='home'),
-    # url(r'^mbcms/', include('mbcms.foo.urls')),
-
+    url(r'^$', portfolio.views.index),
+    url(r'^projects/', include('portfolio.urls')),
+    url(r'^editor/', include('ckeditor.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'(.*)/', portfolio.views.page),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
