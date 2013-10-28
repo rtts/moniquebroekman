@@ -1,0 +1,4 @@
+Here are some gotchas:
+
+- apt-get postgres-...-dev before pip install pycopg2
+- For jpeg support, apt-get libjpeg-dev before pip installing django-ckeditor
