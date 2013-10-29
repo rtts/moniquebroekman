@@ -16,9 +16,9 @@
   </head>
   <body>
     {% block header %}
-    <div class="header js-masonry" data-masonry-options='{ "itemSelector": ".headerblock" }'>
+    <div class="header">
       <div class="logo headerblock">
-        <a href="/">Monique<br>Broekman</a>
+        <a href="/"><img src="{% static 'moniquebroekman.png' %}" alt="logo Monique Broekman"/></a>
       </div>
       <div class="navigation headerblock">
         {% block navigation %}

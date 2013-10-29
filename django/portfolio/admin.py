@@ -1,5 +1,7 @@
 from django.contrib import admin
-from portfolio.models import Project, Page
+from adminsortable.admin import SortableAdmin
+from portfolio.models import Portfolio, Project, Page
 
-admin.site.register(Project)
-admin.site.register(Page)
+admin.site.register(Portfolio, SortableAdmin)
+admin.site.register(Project, SortableAdmin)
+admin.site.register(Page, SortableAdmin)
