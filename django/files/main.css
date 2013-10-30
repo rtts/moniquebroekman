@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Quicksand);
+
 .headerblock {
     display: inline-block;
     vertical-align: top;
@@ -6,4 +8,76 @@
 .project {
     border: 1px solid black;
     width: 200px;
+}
+
+.content {
+    margin-left: 8px;
+}
+
+body, input {
+    font-family: Arial, sans-serif;
+    line-height: 150%;
+    color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Quicksand', sans-serif;
+    text-rendering: optimizeLegibility;
+    font-weight: normal;
+    margin-bottom: .5em;
+}
+
+p {
+  margin-top: .5em;
+}
+
+a:link {
+    color: #375493;
+}
+a:active {
+    color: #f33;
+}
+a:hover {
+    color: #333;
+}
+a:visited {
+    color: #375493;
+}
+
+sup, sub {
+    font-size: 80%;
+    line-height: 0;
+}
+sup {
+    vertical-align: super;
+}
+sub {
+    vertical-align: sub;
+}
+code {
+    font-family: Inconsolata, Consolas, mono;
+}
+
+ul , ol{
+    margin-left: 22px;
+}
+blockquote {
+    display: block;
+    background: #eee;
+    background: rgba(0,0,0,.05);
+    border-left: 4px solid;
+    border-left-color: #ccc;
+    border-left-color:  rgba(0,0,0,.1);
+    padding: 10px;
+    font-style: italic;
+}
+    blockquote p:last-child {
+        margin-bottom: 0;
+    }
+pre {
+    font-family: Inconsolata, Consolas, mono;
+    background: black;
+    background: rgba(0,0,0,.8);
+    color: #eee;
+    padding: 10px 22px;
 }

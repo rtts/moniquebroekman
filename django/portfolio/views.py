@@ -1,27 +1,35 @@
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404
-from portfolio.models import Project, Page
+from website.models import Page
+from portfolio.models import Category, Project
 
-def index(request):
-    projects = Project.objects.all()
-    pages = Page.objects.all()
+def index(request, category=''):
+    '''
+    Serves a list of projects, narrowed down by category if supplied
+    '''
+    print "Hey someone requested '%s'" % category
+    if category:
+        cat = get_object_or_404(Category, short_name=category)
+        projects = cat.projects.all()
+    else:
+        projects = Project.objects.all()
+    pages = Page.objects.filter(visible_in_menu=True)
+    categories = Category.objects.filter(visible_in_menu=True)
     return render(request, 'portfolio/index.html', {
             'pages': pages,
-            'projects': projects
+            'projects': projects,
+            'categories': categories
             })
 
 def project(request, name):
-    pages = Page.objects.all()
+    '''
+    Serves a project page
+    '''
     project = get_object_or_404(Project, short_name=name)
+    pages = Page.objects.filter(visible_in_menu=True)
+    categories = Category.objects.filter(visible_in_menu=True)
     return render(request, 'portfolio/project.html', {
             'pages': pages,
-            'project': project
-            })
-
-def page(request, name):
-    pages = Page.objects.all()
-    page = get_object_or_404(Page, short_name=name)
-    return render(request, 'portfolio/page.html', {
-            'pages': pages,
-            'page': page
+            'project': project,
+            'categories': categories
             })

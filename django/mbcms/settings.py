@@ -54,6 +54,43 @@ MEDIA_URL = "/media/"
 
 CKEDITOR_UPLOAD_PATH = "/srv/moniquebroekman"
 
+CKEDITOR_CONFIGS = {
+    'default': {
+        'autoGrow_onStartup': True,
+        'contentsCss': '/static/main.css', # sorry, should've computed this
+        'toolbar_Full': [
+            ['Format', 'Bold', 'Italic', 'Underline', 'RemoveFormat'],
+            ['Link', 'Image', 'Blockquote', 'Table', 'HorizontalRule'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent'],
+            ['Find', 'Replace', 'Scayt'],
+            ['Source'],
+            ],
+        'toolbar': 'Full',
+        'height': 400,
+        'width': '100%'
+        }
+    }
+
+# config.toolbar_Full =
+# [
+#     { name: 'document',    items : [ 'Source','-','Save','NewPage','DocProps','Preview','Print','-','Templates' ] },
+#     { name: 'clipboard',   items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },
+#     { name: 'editing',     items : [ 'Find','Replace','-','SelectAll','-','SpellChecker', 'Scayt' ] },
+#     { name: 'forms',       items : [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField' ] },
+#     '/',
+#     { name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ] },
+#     { name: 'paragraph',   items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','CreateDiv','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','BidiLtr','BidiRtl' ] },
+#     { name: 'links',       items : [ 'Link','Unlink','Anchor' ] },
+#     { name: 'insert',      items : [ 'Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak' ] },
+#     '/',
+#     { name: 'styles',      items : [ 'Styles','Format','Font','FontSize' ] },
+#     { name: 'colors',      items : [ 'TextColor','BGColor' ] },
+#     { name: 'tools',       items : [ 'Maximize', 'ShowBlocks','-','About' ] }
+# ];
+
+
+
+
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
@@ -69,12 +106,16 @@ STATICFILES_DIRS = (
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django.contrib.staticfiles.finders.FileSystemFinder',
 )
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'ml$$+w*5#+n%f^1ifmxaixk^^j7a2#7)gk%3f7-tl1)cvwxg_+'
+
+TEMPLATE_DIRS = (
+    os.path.join(PROJECT_PATH, "templates"),
+)
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -108,13 +149,11 @@ ROOT_URLCONF = 'mbcms.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'mbcms.wsgi.application'
 
-TEMPLATE_DIRS = (
-    os.path.join(PROJECT_PATH, "templates"),
-)
-
 INSTALLED_APPS = (
     'ckeditor',
     'adminsortable',
+    'django_extensions',
+    'grappelli',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -122,8 +161,11 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'website',
     'portfolio',
 )
+
+GRAPPELLI_ADMIN_TITLE = 'Monique Broekman Administration'
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 

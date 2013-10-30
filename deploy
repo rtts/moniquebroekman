@@ -3,3 +3,5 @@ Here are some gotchas:
 - apt-get python-dev before pip install pycrypto
 - apt-get postgres-...-dev before pip install pycopg2
 - apt-get libjpeg-dev before pip install django-ckeditor
+- apt-get graphviz graphviz dev before pip install pygraphviz
+- pip insta pygraphviz before pip install django-extensions

@@ -3,7 +3,15 @@
 {% block navigation %}
 <ul>
   {% for p in pages %}
-  <li><a href="{% url 'portfolio.views.page' p.short_name %}">{{p.page_title}}</a></li>
+  <li><a href="{% url 'page' p.short_name %}">{{p.page_title}}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}
+
+{% block categories %}
+<ul>
+  {% for c in categories %}
+  <li><a href="{% url 'category' c.short_name %}">{{c.category_name}}</a></li>
   {% endfor %}
 </ul>
 {% endblock %}

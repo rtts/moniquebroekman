@@ -4,7 +4,7 @@
 <html>
   <head>
     <title>
-      {% block title %}Monique Broekman{% endblock %}
+      Monique Broekman - {% block title %}Kunstenares met engagement uit &rsquo;s-Hertogenbosch{% endblock %}
     </title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="HandheldFriendly" content="true" />
@@ -18,17 +18,25 @@
     {% block header %}
     <div class="header">
       <div class="logo headerblock">
-        <a href="/"><img src="{% static 'moniquebroekman.png' %}" alt="logo Monique Broekman"/></a>
+        <a href="/"><img src="{% static 'moniquebroekman.png' %}" width="201" height="100" alt="logo Monique Broekman"/></a>
       </div>
       <div class="navigation headerblock">
         {% block navigation %}
         {% endblock %}
       </div>
+      <div class="navigation headerblock">
+        {% block categories %}
+        {% endblock %}
+      </div>
     </div>
     {% endblock %}
+    <div class="content">
     {% block content %}
     {% endblock %}
+    </div>
+    <div class="footer">
     {% block footer %}
     {% endblock %}
+    </div>
   </body>
 </html>
