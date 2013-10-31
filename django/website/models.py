@@ -8,6 +8,6 @@ class Page(Sortable):
     visible_in_menu = models.BooleanField(default=True)
     page_content = RichTextField()
     def __unicode__(self):
-        return "%s: %s" % (self.short_name, self.page_title)
+        return self.page_title
     class Meta(Sortable.Meta):
         pass

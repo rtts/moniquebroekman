@@ -4,6 +4,8 @@ from website.models import Page
 
 class WebsitePageAdmin(SortableAdmin):
     prepopulated_fields = {"short_name": ("page_title",)}
+    list_display = ('visible_in_menu', 'short_name', 'page_title')
+    list_display_links = ('page_title',)
 
 admin.site.register(Page, WebsitePageAdmin)
 
