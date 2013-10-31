@@ -1,7 +1,37 @@
-Here are some gotchas:
+#!/usr/bin/env python
+from r2src.deploy import *
 
-- apt-get python-dev before pip install pycrypto
-- apt-get postgres-...-dev before pip install pycopg2
-- apt-get libjpeg-dev before pip install django-ckeditor
-- apt-get graphviz graphviz dev before pip install pygraphviz
-- pip insta pygraphviz before pip install django-extensions
+host = 'monique.thyself.nl'
+
+bootstrap()
+install('python-dev postgresql postgresql-server-dev-all libjpeg-dev')
+setup_virtualenv('monique')
+
+explain("Checking /srv/moniquebroekman"):
+    dir_exists('/srv/moniquebroekman')
+done()
+
+explain("Checking database user 'monique'...")
+with settings(hide('warnings'), sudo_user='postgres', warn_only=True):
+    if sudo('psql -tc "select * from pg_user where usename = \'monique\';" | grep -q monique').failed:
+        sudo('createuser -SRD monique')
+    # creating db's simply fails if they already exist
+    sudo('createdb -O monique monique')
+    sudo('createdb -O monique monique')
+done()
+
+upload()
+
+explain("Collecting static files...")
+with cd('qqq'):
+        vrun('qqq', './manage.py collectstatic')
+done()
+
+explain("Syncing database...")
+with cd('qqq'):
+        vrun('qqq', './manage.py syncdb')
+done()
+
+serve_dynamically(host, virtualenv='monique', wsgi_file='mbcms/wsgy.py')
+
+done('Deployment complete!')
