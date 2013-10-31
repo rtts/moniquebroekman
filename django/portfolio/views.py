@@ -7,7 +7,6 @@ def index(request, category=''):
     '''
     Serves a list of projects, narrowed down by category if supplied
     '''
-    print "Hey someone requested '%s'" % category
     if category:
         cat = get_object_or_404(Category, short_name=category)
         projects = cat.projects.all()
