@@ -4,6 +4,7 @@ argparse==1.2.1
 django-admin-sortable==1.5.5
 django-ckeditor==4.0.2
 django-extensions==1.2.5
+django-grappelli==2.4.7
 ipython==1.1.0
 psycopg2==2.5.1
 pygraphviz==1.2

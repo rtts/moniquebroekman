@@ -7,8 +7,8 @@ bootstrap()
 install('python-dev postgresql postgresql-server-dev-all libjpeg-dev')
 setup_virtualenv('monique')
 
-explain("Checking /srv/moniquebroekman"):
-    dir_exists('/srv/moniquebroekman')
+explain("Checking /srv/moniquebroekman")
+dir_exists('/srv/moniquebroekman')
 done()
 
 explain("Checking database user 'monique'...")
@@ -23,13 +23,13 @@ done()
 upload()
 
 explain("Collecting static files...")
-with cd('qqq'):
-        vrun('qqq', './manage.py collectstatic')
+with cd(abspath('django')):
+    vrun('monique', './manage.py collectstatic')
 done()
 
 explain("Syncing database...")
-with cd('qqq'):
-        vrun('qqq', './manage.py syncdb')
+with cd(abspath('django')):
+    vrun('monique', './manage.py syncdb')
 done()
 
 serve_dynamically(host, virtualenv='monique', wsgi_file='mbcms/wsgy.py')
