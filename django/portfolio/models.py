@@ -6,7 +6,7 @@ class Category(Sortable):
     category_name = models.CharField(max_length=255)
     short_name = models.SlugField(unique=True)
     visible_in_menu = models.BooleanField(default=True)
-    projects = models.ManyToManyField("Project", related_name="categories")
+    projects = models.ManyToManyField("Project", blank=True, related_name="categories")
     def __unicode__(self):
         return self.category_name
     class Meta(Sortable.Meta):
@@ -23,4 +23,5 @@ class Project(Sortable):
     def __unicode__(self):
         return self.project_title
     class Meta(Sortable.Meta):
+        ordering = ['-order']
         pass
