@@ -1,23 +1,68 @@
 @import url(http://fonts.googleapis.com/css?family=Quicksand);
 
+.header {
+    border-bottom: 1px solid #ccc;
+}
+
+.footer {
+    border-top: 1px solid #ccc;
+    height: 100px;
+}
+
 .headerblock {
     display: inline-block;
     vertical-align: top;
+    padding: 12px;
+}
+
+.headerblock ul {
+    list-style: none;
+    line-height: 22px;
+}
+
+.headerblock a:link, headerblock a:visited {
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: black;
 }
 
 .project {
-    border: 1px solid black;
+    padding: 20px;
     width: 200px;
+    cursor: pointer;
 }
 
-.content {
-    margin-left: 8px;
+a.more {
+    display: block;
+    font-size: 8px;
+    margin-top: -10px;
+}
+
+.project:hover {
+    background: #ccc;
+}
+
+.project img {
+    margin-top: 15px;
+}
+
+.project_title {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+}
+
+.page {
+    margin-left: 20px;
+    width: 80%;
 }
 
 body, input {
+    font-size: 14px;
     font-family: Arial, sans-serif;
-    line-height: 150%;
-    color: #333;
+    line-height: 125%;
+    color: #555;
 }
 
 small {
