@@ -32,6 +32,6 @@ with cd(abspath('django')):
     vrun('monique', './manage.py syncdb')
 done()
 
-serve_dynamically(host, virtualenv='monique', wsgi_file='mbcms/wsgy.py')
+serve_dynamically(host, virtualenv='monique', static_dir=abspath('django/static'), chdir=abspath('django'), wsgi_file='mbcms/wsgi.py')
 
 done('Deployment complete!')
