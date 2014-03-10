@@ -5,7 +5,7 @@ host = 'www.moniquebroekman.nl'
 aliases = ['moniquebroekman.nl', 'www.puckworks.nl', 'puckworks.nl']
 
 bootstrap()
-install('python-dev postgresql postgresql-server-dev-all libjpeg-dev')
+install('python-dev postgresql postgresql-server-dev-all')
 setup_virtualenv('monique')
 
 explain("Checking /srv/moniquebroekman")
