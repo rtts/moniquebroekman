@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 from r2src.deploy import *
 
-host = 'www.moniquebroekman.nl'
-aliases = ['moniquebroekman.nl', 'www.puckworks.nl', 'puckworks.nl']
+host = 'monique.thyself.nl'
 
 bootstrap()
 install('python-dev postgresql postgresql-server-dev-all libjpeg-dev')
