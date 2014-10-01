@@ -1,5 +1,5 @@
 Django==1.5.5
-Pillow==2.2.1
+Pillow==2.2.2
 argparse==1.2.1
 django-admin-sortable==1.5.5
 django-ckeditor==4.0.2
