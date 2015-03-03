@@ -1,38 +1,15 @@
 #!/usr/bin/env python
-from r2src.deploy import *
+from fabric.api import *
 
-host = 'www.moniquebroekman.nl'
-aliases = ['moniquebroekman.nl', 'www.puckworks.nl', 'puckworks.nl']
+env.host_string = 'rtts.eu'
+env.user = 'www'
 
-bootstrap()
-install('python-dev postgresql postgresql-server-dev-all')
-setup_virtualenv('monique')
+local('rsync -av --delete django/ www@rtts.eu:moniquebroekman')
 
-explain("Checking /srv/moniquebroekman")
-dir_exists('/srv/moniquebroekman')
-done()
+with cd('/home/www/moniquebroekman'):
+    with prefix('workon monique'):
+        run('./manage.py collectstatic')
+        run('./manage.py syncdb')
 
-explain("Checking database user 'monique'...")
-with settings(hide('warnings'), sudo_user='postgres', warn_only=True):
-    if sudo('psql -tc "select * from pg_user where usename = \'monique\';" | grep -q monique').failed:
-        sudo('createuser -SRD monique')
-    # creating db's simply fails if they already exist
-    sudo('createdb -O monique monique')
-    sudo('createdb -O monique monique')
-done()
-
-upload()
-
-explain("Collecting static files...")
-with cd(abspath('django')):
-    vrun('monique', './manage.py collectstatic')
-done()
-
-explain("Syncing database...")
-with cd(abspath('django')):
-    vrun('monique', './manage.py syncdb')
-done()
-
-serve_dynamically(host, aliases, virtualenv='monique', media_url='/media', media_dir='/srv/moniquebroekman', static_dir=abspath('django/static'), chdir=abspath('django'), wsgi_file='mbcms/wsgi.py')
-
-done('Deployment complete!')
+env.user = 'origin'
+sudo('killall -SIGHUP uwsgi')
