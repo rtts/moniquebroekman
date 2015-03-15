@@ -22,7 +22,7 @@ DATABASES = {
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['monique.thyself.nl', 'localhost', 'www.moniquebroekman.nl', 'moniquebroekman.nl']
+ALLOWED_HOSTS = ['localhost', 'www.moniquebroekman.nl', 'moniquebroekman.nl']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -49,7 +49,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = '/srv/moniquebroekman'
+MEDIA_ROOT = '/srv/moniquebroekman/media'
 MEDIA_URL = "/media/"
 
 CKEDITOR_UPLOAD_PATH = "/srv/moniquebroekman"
@@ -96,7 +96,7 @@ CKEDITOR_CONFIGS = {
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = os.path.join(PROJECT_PATH, "static")
+STATIC_ROOT = '/srv/moniquebroekman/static'
 STATIC_URL = "/static/"
 
 # Additional locations of static files
