@@ -3,7 +3,11 @@ import os
 gettext = lambda s: s
 PROJECT_PATH = os.path.split(os.path.abspath(os.path.dirname(__file__)))[0]
 
-DEBUG = False
+try:
+    import uwsgi
+    DEBUG = False
+except ImportError:
+    DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
