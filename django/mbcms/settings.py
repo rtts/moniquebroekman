@@ -13,7 +13,7 @@ TEMPLATE_DEBUG = DEBUG
 ADMINS = (
     ('jj', 'jj@returntothesource.nl'),
 )
-
+SERVER_EMAIL = 'moniquebroekman@rtts.eu'
 MANAGERS = ADMINS
 
 DATABASES = {
