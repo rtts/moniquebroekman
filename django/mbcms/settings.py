@@ -56,7 +56,7 @@ USE_TZ = True
 MEDIA_ROOT = '/srv/moniquebroekman/media'
 MEDIA_URL = "/media/"
 
-CKEDITOR_UPLOAD_PATH = "/srv/moniquebroekman"
+CKEDITOR_UPLOAD_PATH = "/srv/moniquebroekman/media"
 
 CKEDITOR_CONFIGS = {
     'default': {
