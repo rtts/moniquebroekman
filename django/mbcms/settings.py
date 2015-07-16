@@ -65,7 +65,7 @@ CKEDITOR_CONFIGS = {
         'contentsCss': '/static/main.css', # sorry, should've computed this
         'toolbar_Full': [
             ['Format', 'Bold', 'Italic', 'Underline', 'RemoveFormat'],
-            ['Link', 'Image', 'Blockquote', 'Table', 'HorizontalRule'],
+            ['Anchor', 'Link', 'Image', 'Blockquote', 'Table', 'HorizontalRule'],
             ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent'],
             ['Find', 'Replace', 'Scayt'],
             ['Source'],
