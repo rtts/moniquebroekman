@@ -1,0 +1,11 @@
+{% extends "portfolio/index.html" %}
+
+{% block title %}{{project.project_title}}{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+    <div class="page">
+      {{project.article_content|safe}}
+    </div>
+{% endblock %}

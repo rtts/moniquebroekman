@@ -32,3 +32,12 @@ def project(request, name):
             'project': project,
             'categories': categories
             })
+
+def project_backdoor(request, name):
+    '''
+    Serves a project page in an anonymous template
+    '''
+    project = get_object_or_404(Project, short_name=name)
+    return render(request, 'portfolio/project_backdoor.html', {
+            'project': project,
+            })
