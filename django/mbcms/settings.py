@@ -1,62 +1,71 @@
-# -*- coding: utf-8 -*-
 import os
-gettext = lambda s: s
-PROJECT_PATH = os.path.split(os.path.abspath(os.path.dirname(__file__)))[0]
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 try:
     import uwsgi
     DEBUG = False
 except ImportError:
     DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 
-ADMINS = (
-    ('jj', 'jj@returntothesource.nl'),
-)
-SERVER_EMAIL = 'moniquebroekman@rtts.eu'
-MANAGERS = ADMINS
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'monique',
-        'USER': 'monique',
-    }
-}
-
-# Hosts/domain names that are valid for this site; required if DEBUG is False
-# See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['localhost', 'www.moniquebroekman.nl', 'moniquebroekman.nl']
-
-# Local time zone for this installation. Choices can be found here:
-# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
-# although not all choices may be available on all operating systems.
-# In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'Europe/London'
-
-# Language code for this installation. All choices can be found here:
-# http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en'
-
-SITE_ID = 1
-
-# If you set this to False, Django will make some optimizations so as not
-# to load the internationalization machinery.
-USE_I18N = True
-
-# If you set this to False, Django will not format dates, numbers and
-# calendars according to the current locale.
-USE_L10N = True
-
-# If you set this to False, Django will not use timezone-aware datetimes.
-USE_TZ = True
-
-# Absolute filesystem path to the directory that will hold user-uploaded files.
-# Example: "/var/www/example.com/media/"
-MEDIA_ROOT = '/srv/moniquebroekman/media'
-MEDIA_URL = "/media/"
-
+ADMINS               = [('jj', 'jj@returntothesource.nl')]
+SERVER_EMAIL         = 'moniquebroekman@rtts.eu'
+MANAGERS             = ADMINS
+ROOT_URLCONF         = 'mbcms.urls'
+WSGI_APPLICATION     = 'mbcms.wsgi.application'
+SESSION_SERIALIZER   = 'django.contrib.sessions.serializers.JSONSerializer'
+SECRET_KEY           = 'ml$$+w*5#+n%f^1ifmxaixk^^j7a2#7)gk%3f7-tl1)cvwxg_+'
+STATIC_ROOT          = '/srv/moniquebroekman/static'
+STATIC_URL           = "/static/"
+STATICFILES_DIRS     = [os.path.join(PROJECT_DIR, 'static')]
+ALLOWED_HOSTS        = ['localhost', 'www.moniquebroekman.nl', 'moniquebroekman.nl']
+TIME_ZONE            = 'Europe/Amsterdam'
+LANGUAGE_CODE        = 'NL'
+SITE_ID              = 1
+USE_I18N             = True
+USE_L10N             = True
+USE_TZ               = True
+MEDIA_ROOT           = '/srv/moniquebroekman/media'
+MEDIA_URL            = "/media/"
 CKEDITOR_UPLOAD_PATH = "/srv/moniquebroekman/media"
+
+INSTALLED_APPS = (
+    'ckeditor',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    #'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django.contrib.admin',
+    'website',
+    'portfolio',
+)
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(PROJECT_DIR, 'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    #'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
 
 CKEDITOR_CONFIGS = {
     'default': {
@@ -76,129 +85,10 @@ CKEDITOR_CONFIGS = {
         }
     }
 
-# config.toolbar_Full =
-# [
-#     { name: 'document',    items : [ 'Source','-','Save','NewPage','DocProps','Preview','Print','-','Templates' ] },
-#     { name: 'clipboard',   items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },
-#     { name: 'editing',     items : [ 'Find','Replace','-','SelectAll','-','SpellChecker', 'Scayt' ] },
-#     { name: 'forms',       items : [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField' ] },
-#     '/',
-#     { name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ] },
-#     { name: 'paragraph',   items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote','CreateDiv','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','BidiLtr','BidiRtl' ] },
-#     { name: 'links',       items : [ 'Link','Unlink','Anchor' ] },
-#     { name: 'insert',      items : [ 'Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak' ] },
-#     '/',
-#     { name: 'styles',      items : [ 'Styles','Format','Font','FontSize' ] },
-#     { name: 'colors',      items : [ 'TextColor','BGColor' ] },
-#     { name: 'tools',       items : [ 'Maximize', 'ShowBlocks','-','About' ] }
-# ];
-
-
-
-
-# Absolute path to the directory static files should be collected to.
-# Don't put anything in this directory yourself; store your static files
-# in apps' "static/" subdirectories and in STATICFILES_DIRS.
-# Example: "/var/www/example.com/static/"
-STATIC_ROOT = '/srv/moniquebroekman/static'
-STATIC_URL = "/static/"
-
-# Additional locations of static files
-STATICFILES_DIRS = (
-    os.path.join(PROJECT_PATH, "files"),
-)
-
-# List of finder classes that know how to find static files in
-# various locations.
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-)
-
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'ml$$+w*5#+n%f^1ifmxaixk^^j7a2#7)gk%3f7-tl1)cvwxg_+'
-
-TEMPLATE_DIRS = (
-    os.path.join(PROJECT_PATH, "templates"),
-)
-
-# List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
-)
-
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.media",
-    "django.core.context_processors.static",
-    "django.core.context_processors.tz",
-    "django.contrib.messages.context_processors.messages"
-)
-
-MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    # Uncomment the next line for simple clickjacking protection:
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
-)
-
-ROOT_URLCONF = 'mbcms.urls'
-
-# Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'mbcms.wsgi.application'
-
-INSTALLED_APPS = (
-    'ckeditor',
-    'adminsortable',
-    'django_extensions',
-    'grappelli',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.sites',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django.contrib.admin',
-    'website',
-    'portfolio',
-)
-
-GRAPPELLI_ADMIN_TITLE = 'Monique Broekman Administration'
-
-SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
-
-# A sample logging configuration. The only tangible logging
-# performed by this configuration is to send an email to
-# the site admins on every HTTP 500 error when DEBUG=False.
-# See http://docs.djangoproject.com/en/dev/topics/logging for
-# more details on how to customize your logging configuration.
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse'
-        }
-    },
-    'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
-        }
-    },
-    'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': True,
-        },
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'monique',
+        'USER': 'monique',
     }
 }

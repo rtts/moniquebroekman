@@ -9,12 +9,12 @@ env.host_string = 'moniquebroekman.nl'
 # Transfer files
 print(red('\nTransferring files...', bold=True))
 env.user = 'www'
-local('rsync -av --delete django/ %s@%s:%s' % (env.user, env.host_string, project_name))
+local('rsync -avL --delete django/ %s@%s:%s' % (env.user, env.host_string, project_name))
 
 # Initialize virtualenv
 print(red('\nCreating the Python virtualenv...', bold=True))
 if not exists('.virtualenvs/%s' % project_name):
-    run('mkvirtualenv -p /usr/bin/python2 %s' % project_name)
+    run('mkvirtualenv -p /usr/bin/python3 %s' % project_name)
 with cd(project_name):
     with prefix('workon %s' % project_name):
         run('pip install -r requirements.txt')
@@ -23,7 +23,7 @@ with cd(project_name):
         print(red('\nRunning Django household commands', bold=True))
         run('mkdir -p /srv/%s' % project_name)
         run('yes yes | ./manage.py collectstatic')
-        run('./manage.py syncdb')
+        run('./manage.py migrate --fake-initial')
 
 # Place config files
 print(red('\n(Re)placing config files...', bold=True))
