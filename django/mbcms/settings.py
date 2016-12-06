@@ -81,7 +81,8 @@ CKEDITOR_CONFIGS = {
             ],
         'toolbar': 'Full',
         'height': 400,
-        'width': '100%'
+        'width': '100%',
+        'allowedContent': True, # this allows iframes, embeds, scripts, etc...
         }
     }
 
