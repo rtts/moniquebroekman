@@ -1,7 +1,12 @@
 @import url(http://fonts.googleapis.com/css?family=Quicksand);
 
-.header {
-    border-bottom: 1px solid #ccc;
+body {
+  margin: 2em;
+}
+
+div.header {
+  border-bottom: 1px solid #ccc;
+  overflow: hidden;
 }
 
 .footer {
@@ -9,23 +14,37 @@
     height: 100px;
 }
 
-.headerblock {
-    display: inline-block;
-    vertical-align: top;
-    padding: 12px;
+div.logo {
+  float: left;
+  margin-bottom: -50px;
 }
 
-.headerblock ul {
-    list-style: none;
-    line-height: 22px;
+div.navigation ul {
+  margin-left: 32px;
+  margin-top: 63px;
+  padding: 0;
+  list-style: none;
+  display: inline-block;
 }
 
-.headerblock a:link, headerblock a:visited {
+div.navigation ul > li {
+  display: inline;
+  margin-right: 1em;
+}
+
+div.navigation a:link, div.navigation a:visited {
     font-family: Quicksand, sans;
     text-decoration: none;
     font-size: 14px;
     letter-spacing: 2px;
     color: black;
+}
+
+div.cat {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  background-size: cover;
 }
 
 .project {
@@ -55,8 +74,8 @@ a.more {
     color: #333;
 }
 
-.page {
-    margin: 20px;
+div.page {
+    margin: 32px;
     width: 80%;
 }
 

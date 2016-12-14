@@ -3,13 +3,13 @@ from fabric.api import *
 from fabric.contrib.files import exists
 from fabric.colors import red, green
 
-project_name = 'moniquebroekman'
-env.host_string = 'moniquebroekman.nl'
+project_name = 'monique.created.today'
+env.host_string = 'monique.created.today'
 
 # Transfer files
 print(red('\nTransferring files...', bold=True))
 env.user = 'www'
-local('rsync -avL --delete django/ %s@%s:%s' % (env.user, env.host_string, project_name))
+local('rsync -avL --delete ./ %s@%s:%s' % (env.user, env.host_string, project_name))
 
 # Initialize virtualenv
 print(red('\nCreating the Python virtualenv...', bold=True))

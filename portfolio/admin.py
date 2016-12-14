@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib import admin
 from django.utils.html import strip_tags
+from django.utils.safestring import mark_safe
 from django.forms import CheckboxSelectMultiple
 from portfolio.models import Category, Project
 
@@ -26,9 +27,13 @@ class PortfolioProjectAdmin(admin.ModelAdmin):
         models.ManyToManyField: {'widget': CheckboxSelectMultiple},
     }
     prepopulated_fields = {"short_name": ["project_title"]}
-    list_display = ['position', 'created', 'short_name', 'project_title', frontpage_summary, category]
+    list_display = ['position', 'created', 'show_url', 'project_title', frontpage_summary, category]
     list_display_links = ['project_title']
     list_filter = ['categories']
+
+    def show_url(self, obj):
+        return mark_safe('<a href="/project/{}" target="_blank">{}</a>'.format(obj.short_name, obj.short_name))
+    show_url.short_description = 'verkorte naam'
 
 admin.site.register(Category, PortfolioCategoryAdmin)
 admin.site.register(Project, PortfolioProjectAdmin)

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <div class="page">
+    {% for cat in categories %}
+      {% if cat.image %}
+        <div class="cat" style="background-image: url('{{cat.image.url}}')"></div>
+      {% else %}
+        <div class="cat" style="background-image: url('{% static 'no_image.jpg' %}')"></div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+{% endblock %}

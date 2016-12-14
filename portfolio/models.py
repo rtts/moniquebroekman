@@ -7,6 +7,7 @@ class Category(NumberedModel):
     category_name = models.CharField('naam van deze categorie', max_length=255)
     short_name = models.SlugField('verkorte naam', help_text='deze naam wordt gebruikt in de URL', unique=True)
     visible_in_menu = models.BooleanField('zichtbaar in het menu', default=True)
+    image = models.ImageField('afbeelding', blank=True)
     projects = models.ManyToManyField("Project", verbose_name='projecten', blank=True, related_name="categories")
     def __str__(self):
         return self.category_name

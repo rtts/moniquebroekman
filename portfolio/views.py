@@ -3,6 +3,17 @@ from django.shortcuts import render, get_object_or_404
 from website.models import Page
 from portfolio.models import Category, Project
 
+def homepage(request):
+    '''
+    Serves the homepage, a list of categories
+    '''
+    pages = Page.objects.filter(visible_in_menu=True)
+    categories = Category.objects.filter(visible_in_menu=True)
+    return render(request, 'portfolio/homepage.html', {
+            'pages': pages,
+            'categories': categories
+    })
+
 def index(request, category=''):
     '''
     Serves a list of projects, narrowed down by category if supplied
