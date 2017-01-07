@@ -11,45 +11,58 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="{% static 'main.css' %}" type="text/css" />
     {% block javascript %}
-    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script src="{% static 'masonry.pkgd.min.js' %}"></script>
+      <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+      <script src="{% static 'masonry.pkgd.min.js' %}"></script>
     {% endblock %}
   </head>
   <body>
-    {% block header %}
-    <div class="header">
-      <div class="logo">
-        <a href="/"><img src="{% static 'moniquebroekman.png' %}" alt="logo Monique Broekman"/></a>
-      </div>
-      <div class="navigation">
-        {% block navigation %}
-          <ul>
-            {% for p in pages %}
-              <li><a href="{% url 'page' p.short_name %}">{{p.page_title}}</a></li>
-            {% endfor %}
-          </ul>
-        {% endblock %}
-      </div>
-    </div>
-    {% endblock %}
-    <div class="content">
-    {% block content %}
-    {% endblock %}
-    </div>
-    <div class="footer">
-    {% block footer %}
-    {% endblock %}
-    </div>
+
+    <header>
+      {% block header %}
+        <div class="logo">
+          <a href="/">
+            <h1>Monique Broekman</h1>
+            <h2>Beeldend Kunstenaar</h2>
+          </a>
+        </div>
+        <div class="navigation">
+          {% block navigation %}
+            <ul>
+              {% for p in pages %}
+                <li><a href="{% url 'page' p.short_name %}">{{p.page_title}}</a></li>
+              {% endfor %}
+            </ul>
+          {% endblock %}
+          <div class="socialmedia">
+            <a href="https://www.instagram.com/broekmanmonique/"><img height="32" src="{% static 'instagram.png' %}"></a>
+            <a href="https://www.facebook.com/monique.broekman.7"><img height="32" src="{% static 'facebook.png' %}"></a>
+            <a href="https://nl.pinterest.com/puckworks/"><img height="32" src="{% static 'pinterest.png' %}"></a>
+            <a href="https://twitter.com/MMBroekman"><img height="32" src="{% static 'twitter.png' %}"></a>
+          </div>
+        </div>
+      {% endblock %}
+    </header>
+
+    <main>
+      {% block content %}
+      {% endblock %}
+    </main>
+
+    <footer>
+      {% block footer %}
+      {% endblock %}
+    </footer>
+
     <script type="text/javascript">
       var _paq = _paq || [];
       _paq.push(['trackPageView']);
       _paq.push(['enableLinkTracking']);
       (function() {
-      var u="//dashboard.rtts.eu/";
-      _paq.push(['setTrackerUrl', u+'piwik.php']);
-      _paq.push(['setSiteId', 6]);
-      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-      g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+          var u="//dashboard.rtts.eu/";
+          _paq.push(['setTrackerUrl', u+'piwik.php']);
+          _paq.push(['setSiteId', 6]);
+          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+          g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
       })();
     </script>
     <noscript><p><img src="//dashboard.rtts.eu/piwik.php?idsite=6" style="border:0;" alt="" /></p></noscript>

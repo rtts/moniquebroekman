@@ -3,8 +3,8 @@ from fabric.api import *
 from fabric.contrib.files import exists
 from fabric.colors import red, green
 
-project_name = 'monique.created.today'
-env.host_string = 'monique.created.today'
+project_name = 'moniquebroekman'
+env.host_string = 'moniquebroekman.nl'
 
 # Transfer files
 print(red('\nTransferring files...', bold=True))

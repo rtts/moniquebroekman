@@ -19,17 +19,19 @@ def index(request, category=''):
     Serves a list of projects, narrowed down by category if supplied
     '''
     if category:
-        cat = get_object_or_404(Category, short_name=category)
-        projects = cat.projects.all()
+        current_category = get_object_or_404(Category, short_name=category)
+        projects = current_category.projects.all()
     else:
+        current_category = None
         projects = Project.objects.all()
     pages = Page.objects.filter(visible_in_menu=True)
     categories = Category.objects.filter(visible_in_menu=True)
     return render(request, 'portfolio/index.html', {
-            'pages': pages,
-            'projects': projects,
-            'categories': categories
-            })
+        'current_category': current_category,
+        'pages': pages,
+        'projects': projects,
+        'categories': categories
+    })
 
 def project(request, name):
     '''
