@@ -3,13 +3,18 @@
 
 {% block content %}
 
-  <div class="page">
+  <div class="homepage">
     {% for cat in categories %}
-      {% if cat.image %}
-        <div class="cat" style="background-image: url('{{cat.image.url}}')"></div>
-      {% else %}
-        <div class="cat" style="background-image: url('{% static 'no_image.jpg' %}')"></div>
-      {% endif %}
+      <a href="{% url 'category' cat.short_name %}">
+      <div class="cat">
+        {% if cat.image %}
+          <div class="image" style="background-image: url('{{cat.image.url}}')"></div>
+        {% else %}
+          <div class="image" style="background-image: url('{% static 'no_image.jpg' %}')"></div>
+        {% endif %}
+        {{ cat.category_name }}
+      </div>
+      </a>
     {% endfor %}
   </div>
 

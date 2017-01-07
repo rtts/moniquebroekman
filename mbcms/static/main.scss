@@ -109,17 +109,42 @@ ul.tabs {
   }
 }
 
-.footer {
-    border-top: $border;
-    height: 100px;
+footer {
+  border-top: $border;
+  height: 100px;
 }
 
 
-div.cat {
-  width: 200px;
-  height: 200px;
-  display: inline-block;
-  background-size: cover;
+div.homepage {
+  margin: 20px -10px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  div.cat {
+    transition: all 0.2s ease;
+    border: $border;
+    width: 200px;
+    padding: 20px;
+    margin: 10px;
+    flex-base: 250px;
+
+    div.image {
+      width: 100%;
+      padding-bottom: 100%;
+      margin-bottom: 20px;
+      background-size: cover;
+    }
+  }
+  div.cat:hover {
+    transform: scale(1.05);
+    background: $accent1;
+  }
 }
 
 .project {
