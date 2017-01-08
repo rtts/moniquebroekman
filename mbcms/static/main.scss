@@ -116,35 +116,63 @@ footer {
 
 
 div.homepage {
-  margin: 20px -10px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-
-  a {
-    text-decoration: none;
-    color: black;
-  }
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1000;
 
   div.cat {
-    transition: all 0.2s ease;
-    border: $border;
-    width: 200px;
-    padding: 20px;
-    margin: 10px;
-    flex-base: 250px;
+    height: 100vh;
+    position: relative;
 
     div.image {
-      width: 100%;
-      padding-bottom: 100%;
-      margin-bottom: 20px;
+      height: 100%;
       background-size: cover;
+      background-position: center;
+    }
+
+    div.text {
+      opacity: 0.8;
+      font-family: $sans;
+      //font-weight: bold;
+      position: absolute;
+      bottom: 5%;
+      left: 5%;
+      right: 5%;
+      color: white;
+      font-size: 40px;
+
+      a {
+        color: white;
+        text-decoration: none;
+      }
     }
   }
-  div.cat:hover {
-    transform: scale(1.05);
-    background: $accent1;
+}
+
+.white header {
+  opacity: 0.8;
+
+  * {
+    color: white !important;
   }
+}
+
+.white .tabs {
+  opacity: 0.8;
+
+  * {
+    color: white !important;
+  }
+  li:hover {
+    background: transparent !important;
+  }
+}
+
+.white footer {
+  display: none;
 }
 
 .project {
@@ -182,7 +210,7 @@ div.page {
 body, input {
     font-size: 14px;
     font-family: Verdana, sans-serif;
-    line-height: 125%;
+    line-height: 1.25;
     color: #555;
 }
 

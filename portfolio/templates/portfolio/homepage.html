@@ -1,21 +1,45 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block content %}
+{% block extrahead %}
+  <link rel="stylesheet" type="text/css" href="{% static 'slick/slick.css' %}"/>
+{% endblock %}
 
+{% block extraclass %}white{% endblock %}
+
+{% block content %}
   <div class="homepage">
     {% for cat in categories %}
-      <a href="{% url 'category' cat.short_name %}">
-      <div class="cat">
-        {% if cat.image %}
-          <div class="image" style="background-image: url('{{cat.image.url}}')"></div>
-        {% else %}
-          <div class="image" style="background-image: url('{% static 'no_image.jpg' %}')"></div>
-        {% endif %}
-        {{ cat.category_name }}
-      </div>
-      </a>
+
+        <div class="cat">
+          {% if cat.image %}
+            <div class="image" style="background-image: url('{{cat.image.url}}')"></div>
+          {% else %}
+            <div class="image" style="background-image: url('{% static 'no_image.jpg' %}')"></div>
+          {% endif %}
+          {{ cat.category_name }}
+          <div class="text">
+            <a href="{% url 'category' cat.short_name %}">#{{cat.short_name}}</a>
+          </div>
+        </div>
+
     {% endfor %}
   </div>
+{% endblock %}
 
+{% block extrascript %}
+  <script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>
+  <script>
+    $('.homepage').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        arrows: false,
+        pauseOnFocus: false,
+        pauseOnHover: false,
+        draggable: false,
+        autoplaySpeed: 7000,
+        speed: 2000,
+    });
+  </script>
 {% endblock %}

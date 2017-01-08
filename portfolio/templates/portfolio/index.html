@@ -1,16 +1,7 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-
-  <ul class="tabs">
-    <li {% if not current_category %}class="current"{% endif %}>
-      <a href="{% url 'all' %}">Alles</a>
-    {% for cat in categories %}
-      <li {% if current_category.pk == cat.pk %}class="current"{% endif %}>
-        <a href="{% url 'category' cat.short_name %}">{{cat}}</a>
-    {% endfor %}
-  </ul>
-
   <div class="projectlist js-masonry" data-masonry-options='{ "itemSelector": ".project" }'>
     {% for p in projects %}
       <div class="project" onClick="window.location = '{% url 'project' p.short_name %}'">
@@ -27,4 +18,8 @@
   <script>
     $('.more').hide();
   </script>
+{% endblock %}
+
+{% block extrascript %}
+  <script src="{% static 'masonry.pkgd.min.js' %}"></script>
 {% endblock %}

@@ -10,8 +10,9 @@ def homepage(request):
     pages = Page.objects.filter(visible_in_menu=True)
     categories = Category.objects.filter(visible_in_menu=True)
     return render(request, 'portfolio/homepage.html', {
-            'pages': pages,
-            'categories': categories
+        'pages': pages,
+        'categories': categories,
+        'current_category': True, # hack
     })
 
 def index(request, category=''):

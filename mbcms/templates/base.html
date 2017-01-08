@@ -9,13 +9,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="HandheldFriendly" content="true" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="{% static 'main.css' %}" type="text/css" />
-    {% block javascript %}
-      <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-      <script src="{% static 'masonry.pkgd.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'main3.css' %}" type="text/css" />
+    {% block extrahead %}
     {% endblock %}
   </head>
-  <body>
+  <body class="{% block extraclass %}{% endblock %}">
 
     <header>
       {% block header %}
@@ -34,16 +32,24 @@
             </ul>
           {% endblock %}
           <div class="socialmedia">
-            <a href="https://www.instagram.com/broekmanmonique/"><img height="32" src="{% static 'instagram.png' %}"></a>
-            <a href="https://www.facebook.com/monique.broekman.7"><img height="32" src="{% static 'facebook.png' %}"></a>
-            <a href="https://nl.pinterest.com/puckworks/"><img height="32" src="{% static 'pinterest.png' %}"></a>
-            <a href="https://twitter.com/MMBroekman"><img height="32" src="{% static 'twitter.png' %}"></a>
+            <a href="https://www.instagram.com/broekmanmonique/"><img height="32" src="{% static 'instagram1.png' %}"></a>
+            <a href="https://www.facebook.com/monique.broekman.7"><img height="32" src="{% static 'facebook1.png' %}"></a>
+            <a href="https://nl.pinterest.com/puckworks/"><img height="32" src="{% static 'pinterest1.png' %}"></a>
+            <a href="https://twitter.com/MMBroekman"><img height="32" src="{% static 'twitter1.png' %}"></a>
           </div>
         </div>
       {% endblock %}
     </header>
 
     <main>
+      <ul class="tabs">
+        <li {% if not current_category %}class="current"{% endif %}>
+          <a href="{% url 'all' %}">Alles</a>
+          {% for cat in categories %}
+            <li {% if current_category.pk == cat.pk %}class="current"{% endif %}>
+              <a href="{% url 'category' cat.short_name %}">{{cat}}</a>
+          {% endfor %}
+      </ul>
       {% block content %}
       {% endblock %}
     </main>
@@ -53,6 +59,9 @@
       {% endblock %}
     </footer>
 
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    {% block extrascript %}
+    {% endblock %}
     <script type="text/javascript">
       var _paq = _paq || [];
       _paq.push(['trackPageView']);
