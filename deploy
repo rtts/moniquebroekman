@@ -23,7 +23,7 @@ with cd(project_name):
         print(red('\nRunning Django household commands', bold=True))
         run('mkdir -p /srv/%s' % project_name)
         run('yes yes | ./manage.py collectstatic')
-        run('./manage.py migrate --fake-initial')
+        run('./manage.py migrate')
 
 # Place config files
 print(red('\n(Re)placing config files...', bold=True))

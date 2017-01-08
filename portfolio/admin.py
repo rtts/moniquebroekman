@@ -19,7 +19,7 @@ class PortfolioCategoryAdmin(admin.ModelAdmin):
         models.ManyToManyField: {'widget': CheckboxSelectMultiple},
     }
     prepopulated_fields = {"short_name": ["category_name"]}
-    list_display = ['position', 'visible_in_menu', 'short_name', 'category_name', projects]
+    list_display = ['position', 'visible_in_menu', 'visible_on_homepage', 'short_name', 'category_name', projects]
     list_display_links = ['category_name']
 
 class PortfolioProjectAdmin(admin.ModelAdmin):

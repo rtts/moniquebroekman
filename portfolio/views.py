@@ -9,8 +9,10 @@ def homepage(request):
     '''
     pages = Page.objects.filter(visible_in_menu=True)
     categories = Category.objects.filter(visible_in_menu=True)
+    slider = Category.objects.filter(visible_on_homepage=True)
     return render(request, 'portfolio/homepage.html', {
         'pages': pages,
+        'slider': slider,
         'categories': categories,
         'current_category': True, # hack
     })
