@@ -8,8 +8,7 @@ import website.views
 import portfolio.views
 
 urlpatterns = [
-    url(r'^$', portfolio.views.index),
-    url(r'^nieuwehomepage/$', portfolio.views.homepage),
+    url(r'^$', portfolio.views.homepage),
     url(r'^info/', include('website.urls')),
     url(r'^project/', include('portfolio.urls')),
     url(r'^admin/', include(admin.site.urls)),
