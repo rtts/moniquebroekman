@@ -1,9 +1,47 @@
 {% extends "portfolio/index.html" %}
+{% load static %}
+{% load embed_video_tags %}
 
 {% block title %}{{project.project_title}}{% endblock %}
 
+{% block extrahead %}
+  <link rel="stylesheet" type="text/css" href="{% static 'slick/slick.css' %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'slick/slick-theme.css' %}"/>
+{% endblock %}
+
 {% block content %}
-    <div class="page">
-      {{project.article_content|safe}}
+  <div class="page">
+    {{project.article_content|safe}}
+  </div>
+
+  {% for element in project.elements.all %}
+    <div class="element">
+      {% if element.type == 'text' %}
+        {{element.text|safe}}
+      {% elif element.type == 'photo' %}
+        <div class="slider">
+          {% for p in element.photos.all %}
+            <div class="photo">
+              <img src="{{p.image.url}}">
+            </div>
+          {% endfor %}
+        </div>
+      {% elif element.type == 'video' %}
+        {% video element.video %}
+      {% endif %}
     </div>
+  {% endfor %}
+
+{% endblock %}
+
+{% block extrascript %}
+  <script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>
+  <script>
+    $('.slider').slick({
+        arrows: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        adaptiveHeight: true,
+    });
+  </script>
 {% endblock %}

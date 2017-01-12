@@ -110,7 +110,6 @@ ul.tabs {
 }
 
 footer {
-  border-top: $border;
   height: 100px;
 }
 
@@ -203,8 +202,39 @@ a.more {
 }
 
 div.page {
-    margin: 32px;
-    width: 80%;
+  margin: 32px 0;
+  width: 80%;
+}
+
+div.element {
+  border-bottom: $border;
+  padding: 2em 0;
+
+  p {
+    max-width: 700px;
+  }
+
+  div.slider {
+    padding: 0px;
+    margin: 0px;
+    border: $border;
+    div.photo {
+      margin: 10px;
+      height: 80vh;
+      text-align: center;
+      img {
+        display: inline-block;
+        max-height: 100%;
+        max-width: 100%;
+        height: auto;
+        width: auto;
+      }
+    }
+  }
+  .slick-prev:before,
+  .slick-next:before {
+    color: black !important;
+  }
 }
 
 body, input {

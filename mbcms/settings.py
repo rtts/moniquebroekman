@@ -72,7 +72,7 @@ CKEDITOR_CONFIGS = {
     'default': {
         'autoGrow_onStartup': True,
         'forcePasteAsPlainText': True,
-        'contentsCss': '/static/main.css', # sorry, should've computed this
+        'contentsCss': '/static/editor.css', # sorry, should've computed this
         'toolbar_Full': [
             ['Format', 'Bold', 'Italic', 'Underline', 'RemoveFormat'],
             ['Anchor', 'Link', 'Image', 'Blockquote', 'Table', 'HorizontalRule'],

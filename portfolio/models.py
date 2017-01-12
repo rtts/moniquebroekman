@@ -26,8 +26,8 @@ class Project(NumberedModel):
     short_name = models.SlugField('verkorte naam', help_text='deze naam wordt gebruikt in de URL', unique=True)
     image = models.ImageField('afbeelding', blank=True)
     summary = models.TextField('samenvatting', blank=True)
-    frontpage_summary = RichTextField('samenvatting (oude stijl)')
-    article_content = RichTextField('inhoud (oude stijl)')
+    frontpage_summary = RichTextField('samenvatting (oude stijl)', blank=True)
+    article_content = RichTextField('inhoud (oude stijl)', help_text='Probeer deze editor niet meer te gebruiken! Voeg in plaats daarvan foto-, video- of tekstelementen hieronder toe.', blank=True)
     def __str__(self):
         return self.project_title
     class Meta:
@@ -35,21 +35,30 @@ class Project(NumberedModel):
         verbose_name_plural = 'projecten'
 
 class Element(NumberedModel):
-    project = models.ForeignKey('Project')
     TYPES = (
         ('text', 'Tekst element (geeft alleen tekst weer)'),
-        ('photo', 'Foto element (geeft de afbeelding en evt. tekst weer)'),
+        ('photo', 'Foto element (geeft foto’s weer)'),
         ('video', 'Video element (geeft een video weer)'),
     )
+    project = models.ForeignKey('Project', related_name='elements')
     position = models.PositiveIntegerField('positie', blank=True)
     type = models.CharField(max_length=16, choices=TYPES)
-    image = models.ImageField('afbeelding', blank=True)
     video = EmbedVideoField(help_text="Plak hier een YouTube of Vimeo link", blank=True)
     text = RichTextField('tekst', blank=True)
 
     def __str__(self):
-        return '{} element'.format(self.get_type_display())
+        return self.get_type_display().split('(')[0]
 
     class Meta:
         ordering = ['position']
         verbose_name_plural = 'elementen'
+
+class Photo(NumberedModel):
+    element = models.ForeignKey('Element', related_name='photos')
+    position = models.PositiveIntegerField('positie', blank=True)
+    image = models.ImageField('afbeelding', blank=True)
+
+    class Meta:
+        ordering = ['position']
+        verbose_name = 'afbeelding'
+        verbose_name_plural = 'afbeeldingen'
