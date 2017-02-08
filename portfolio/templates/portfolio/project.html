@@ -21,9 +21,11 @@
       {% elif element.type == 'photo' %}
         <div class="slider">
           {% for p in element.photos.all %}
-            <div class="photo">
-              <img src="{{p.image.url}}">
-            </div>
+            {% if p.image %}
+              <div class="photo">
+                <img src="{{p.image.url}}">
+              </div>
+            {% endif %}
           {% endfor %}
         </div>
       {% elif element.type == 'video' %}
