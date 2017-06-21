@@ -27,7 +27,11 @@
           {% block navigation %}
             <ul>
               {% for p in pages %}
-                <li><a href="{% url 'page' p.short_name %}">{{p.page_title}}</a></li>
+                {% if p.short_name == 'blog' %}
+                  <li><a href="/blog/">{{p.page_title}}</a></li>
+                {% else %}
+                  <li><a href="{% url 'page' p.short_name %}">{{p.page_title}}</a></li>
+                {% endif %}
               {% endfor %}
             </ul>
           {% endblock %}
