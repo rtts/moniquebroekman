@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^$', portfolio.views.homepage),
     url(r'^info/', include('website.urls')),
     url(r'^project/', include('portfolio.urls')),
+    url(r'^blog/', include('blog.urls')),
     url(r'^admin/', include(admin.site.urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

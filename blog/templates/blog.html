@@ -1,8 +1,6 @@
-{% extends "portfolio/index.html" %}
+{% extends 'base.html' %}
 {% load static %}
 {% load embed_video_tags %}
-
-{% block title %}{{project.project_title}}{% endblock %}
 
 {% block extrahead %}
   <link rel="stylesheet" type="text/css" href="{% static 'slick/slick2.css' %}"/>
@@ -10,13 +8,21 @@
 {% endblock %}
 
 {% block content %}
-  {% for element in project.elements.all %}
-    <div class="element">
-      {% if element.type == 'text' %}
-        {{element.text|safe}}
-      {% elif element.type == 'photo' %}
+  <div class="page">
+    <ul class="blog_index">
+      {% for blog in blogs %}
+        <li><a href="#{{blog.slug}}">{{blog.date}}: {{blog.title}}</a></li>
+      {% endfor %}
+    </ul>
+    {% for blog in blogs %}
+      <hr>
+      <a name="{{blog.slug}}"></a>
+      <h1>{{blog.title}}</h1>
+      <h2>{{blog.date}}</h2>
+
+      {% if blog.photos.exists %}
         <div class="slider">
-          {% for p in element.photos.all %}
+          {% for p in blog.photos.all %}
             {% if p.image %}
               <div class="photo">
                 <img src="{{p.image.url}}">
@@ -24,18 +30,24 @@
             {% endif %}
           {% endfor %}
         </div>
-      {% elif element.type == 'video' %}
+      {% endif %}
+
+      {% if blog.video %}
         <div class="video">
-          {% video element.video 'huge' %}
+          {% video blog.video 'huge' %}
         </div>
       {% endif %}
-    </div>
-  {% endfor %}
 
-  <div class="page">
-    {{project.article_content|safe}}
+      {{blog.text|safe}}
+    {% endfor %}
   </div>
 
+  {% if oldblog %}
+    <hr>
+    <div class="page">
+      {{oldblog.page_content|safe}}
+    </div>
+  {% endif %}
 {% endblock %}
 
 {% block extrascript %}

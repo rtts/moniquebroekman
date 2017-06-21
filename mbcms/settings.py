@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'embed_video',
     'website',
     'portfolio',
+    'blog',
 )
 
 TEMPLATES = [

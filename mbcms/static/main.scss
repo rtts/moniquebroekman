@@ -204,6 +204,21 @@ a.more {
 div.page {
   margin: 32px 0;
   width: 80%;
+
+  img {
+  /* Cancelled by Monique's request
+    width: 100% !important;
+    height: auto !important;
+ */
+
+    box-sizing: border-box;
+    max-width: 120%;
+    height: auto !important;
+  }
+
+  iframe {
+    max-width: 120%;
+  }
 }
 
 div.element {
@@ -213,29 +228,67 @@ div.element {
   p {
     max-width: 700px;
   }
+}
 
-  div.slider {
-    padding: 0px;
-    margin: 0px;
-    border: $border;
-    div.photo {
-      margin: 10px;
-      height: 80vh;
-      text-align: center;
-      img {
-        display: inline-block;
-        max-height: 100%;
-        max-width: 100%;
-        height: auto;
-        width: auto;
-      }
+div.slider {
+  padding: 0px;
+  margin: 0px;
+  border: $border;
+  div.photo:focus {
+    outline: none;
+  }
+  div.photo {
+    margin: 10px;
+    height: 80vh;
+    //text-align: center;
+    img {
+      display: inline-block;
+      max-height: 100%;
+      max-width: 100%;
+      height: auto;
+      width: auto;
     }
   }
-  .slick-prev:before,
-  .slick-next:before {
-    color: black !important;
+}
+
+div.video {
+  position: relative;
+  width: 70%;
+  height: 0px;
+  padding-bottom: 45%;
+  iframe {
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute;
+    left: 0px;
+    top: 0px;
   }
 }
+
+.slick-prev:before,
+.slick-next:before {
+  color: black !important;
+}
+
+ul.blog_index {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1em;
+
+  li {
+    display: inline-block;
+  }
+  li:after {
+    content: '–';
+    margin: 0 .5em;
+  }
+  li:last-child:after {
+    content: '';
+  }
+}
+
+
 
 body, input {
     font-size: 14px;

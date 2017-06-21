@@ -147,6 +147,11 @@ a.more {
 div.page {
   margin: 32px 0;
   width: 80%; }
+  div.page img {
+    /* Cancelled by Monique's request
+      width: 100% !important;
+      height: auto !important;
+    */ }
 
 div.element {
   border-bottom: 1px solid #bbb;
@@ -251,4 +256,4 @@ pre {
   color: #eee;
   padding: 10px 22px; }
 
-/*# sourceMappingURL=main1.css.map */
+/*# sourceMappingURL=main6.css.map */
