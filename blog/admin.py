@@ -1,8 +1,8 @@
 from django.contrib import admin
 from .models import *
 
-class InlinePhotoAdmin(admin.TabularInline):
-    model = Photo
+class InlineSectionAdmin(admin.StackedInline):
+    model = Section
     extra = 0
     min_num = 1
 
@@ -10,4 +10,4 @@ class InlinePhotoAdmin(admin.TabularInline):
 class BlogAdmin(admin.ModelAdmin):
     list_display = ['title', 'date']
     prepopulated_fields = {'slug': ('title',), }
-    inlines = [InlinePhotoAdmin]
+    inlines = [InlineSectionAdmin]

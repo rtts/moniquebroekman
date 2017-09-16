@@ -1,0 +1,24 @@
+{% load embed_video_tags %}
+
+<a name="{{blog.slug}}"></a>
+<h1>{{blog.title}}</h1>
+<h2>{{blog.date}}</h2>
+
+{{blog.text|safe}}
+
+{% for section in blog.sections.all %}
+  {% if section.video %}
+    <div class="video">
+      {% video section.video 'huge' %}
+    </div>
+  {% endif %}
+
+  {{section.text|safe}}
+
+  {% if section.image %}
+    <div style="padding: 1em 0">
+      <img width="{{section.image_width|default:'70%'}}" src="{{section.image.url}}" alt="{{section.caption}}"><br>
+      <i>{{section.caption}}</i>
+    </div>
+  {% endif %}
+{% endfor %}

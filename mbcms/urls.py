@@ -19,5 +19,5 @@ admin.site.site_title = 'Monique Broekman Beheer'
 admin.site.site_header = 'Monique Broekman Beheer'
 admin.site.site_url = None
 admin.site.index_title = 'Overzicht'
-admin.site.unregister(User)
+#admin.site.unregister(User)
 admin.site.unregister(Group)

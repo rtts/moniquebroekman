@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load embed_video_tags %}
+
+{% block content %}
+  <div class="page">
+
+    {% include 'include/blogpost.html' %}
+
+    <div id="disqus_thread"></div>
+    <script>
+      var disqus_config = function () {
+          this.page.url = 'http://www.moniquebroekman.nl/blog/{{blog.slug}}';
+          this.page.identifier = '{{blog.slug}}'
+      };
+
+      (function() { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = 'https://moniquebroekman.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+    </script>
+
+  </div>
+
+{% endblock %}
