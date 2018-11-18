@@ -12,6 +12,9 @@ class Blog(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        ordering = ['-date']
+
 class Section(NumberedModel):
     position = models.PositiveIntegerField('positie', blank=True)
     text = RichTextField('tekst', blank=True)
