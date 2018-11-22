@@ -63,21 +63,8 @@
       {% endblock %}
     </footer>
 
-    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
     {% block extrascript %}
     {% endblock %}
-    <script type="text/javascript">
-      var _paq = _paq || [];
-      _paq.push(['trackPageView']);
-      _paq.push(['enableLinkTracking']);
-      (function() {
-          var u="//dashboard.rtts.eu/";
-          _paq.push(['setTrackerUrl', u+'piwik.php']);
-          _paq.push(['setSiteId', 6]);
-          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-          g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-      })();
-    </script>
-    <noscript><p><img src="//dashboard.rtts.eu/piwik.php?idsite=6" style="border:0;" alt="" /></p></noscript>
   </body>
 </html>
