@@ -91,7 +91,7 @@ CKEDITOR_CONFIGS = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'monique',
-        'USER': 'monique',
+        'NAME': 'moniquebroekman',
+        'USER': 'moniquebroekman',
     }
 }
