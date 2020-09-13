@@ -5,7 +5,7 @@ from ckeditor.fields import RichTextField
 from embed_video.fields import EmbedVideoField
 from cms.models import Numbered
 
-class Blog(Numbered, models.Model):
+class Blog(models.Model):
     title = models.CharField('titel', max_length=255)
     slug = models.SlugField('URL', unique=True)
     date = models.DateField('datum', default=datetime.now)
