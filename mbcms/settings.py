@@ -1,4 +1,4 @@
-import os
+import os, sys
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 DEBUG = 'runserver' in sys.argv
