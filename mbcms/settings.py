@@ -1,11 +1,7 @@
 import os
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-try:
-    import uwsgi
-    DEBUG = False
-except ImportError:
-    DEBUG = True
+DEBUG = 'runserver' in sys.argv
 
 ADMINS               = [('jj', 'jj@returntothesource.nl')]
 SERVER_EMAIL         = 'moniquebroekman@rtts.eu'
