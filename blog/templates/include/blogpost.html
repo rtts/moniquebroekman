@@ -21,4 +21,31 @@
       <i>{{section.caption}}</i>
     </div>
   {% endif %}
+
+  {% if section.html %}
+    <template id="email-message">
+      <style>
+        table {
+            margin-inline-start: 0;
+        }
+      </style>
+      {{ section.html|safe }}
+    </template>
+
+    <raw-email-message />
+
+    <script>
+      customElements.define('raw-email-message',
+                            class extends HTMLElement {
+                                constructor() {
+                                    super();
+                                    const template = document
+                                        .getElementById('email-message')
+                                        .content;
+                                    const shadowRoot = this.attachShadow({mode: 'open'})
+                                                           .appendChild(template.cloneNode(true));
+                                }
+                            });
+    </script>
+  {% endif %}
 {% endfor %}

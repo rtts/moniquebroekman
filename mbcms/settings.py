@@ -19,7 +19,7 @@ STATIC_URL           = "/static/"
 STATICFILES_DIRS     = [os.path.join(PROJECT_DIR, 'static')]
 ALLOWED_HOSTS        = ['localhost', 'www.moniquebroekman.nl', 'moniquebroekman.nl']
 TIME_ZONE            = 'Europe/Amsterdam'
-LANGUAGE_CODE        = 'NL'
+LANGUAGE_CODE        = 'nl'
 SITE_ID              = 1
 USE_I18N             = True
 USE_L10N             = True
@@ -28,20 +28,22 @@ MEDIA_ROOT           = '/srv/moniquebroekman/media'
 MEDIA_URL            = "/media/"
 CKEDITOR_UPLOAD_PATH = "/srv/moniquebroekman/media"
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'ckeditor',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     #'django.contrib.sites',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'django.contrib.admin',
     'embed_video',
     'website',
     'portfolio',
     'blog',
-)
+    'cms', # new!
+]
+if not DEBUG:
+    INSTALLED_APPS += ['django.contrib.staticfiles']
 
 TEMPLATES = [
     {
@@ -60,6 +62,8 @@ TEMPLATES = [
 ]
 
 MIDDLEWARE = [
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'cms.middleware.SassMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -67,6 +71,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     #'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'cms.middleware.FetchFromCacheMiddleware',
 ]
 
 CKEDITOR_CONFIGS = {

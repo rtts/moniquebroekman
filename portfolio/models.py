@@ -1,9 +1,9 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from embed_video.fields import EmbedVideoField
-from numberedmodel.models import NumberedModel
+from cms.models import Numbered
 
-class Category(NumberedModel):
+class Category(Numbered, models.Model):
     position = models.PositiveIntegerField('positie', blank=True)
     category_name = models.CharField('naam van deze categorie', max_length=255)
     short_name = models.SlugField('verkorte naam', help_text='deze naam wordt gebruikt in de URL', unique=True)
@@ -18,7 +18,7 @@ class Category(NumberedModel):
         verbose_name = 'categorie'
         verbose_name_plural = 'categorieën'
 
-class Project(NumberedModel):
+class Project(Numbered, models.Model):
     position = models.PositiveIntegerField('positie', blank=True)
     created = models.DateTimeField('aangemaakt', auto_now_add=True)
     modified = models.DateTimeField('gewijzigd', auto_now=True)
@@ -34,13 +34,13 @@ class Project(NumberedModel):
         ordering = ['position']
         verbose_name_plural = 'projecten'
 
-class Element(NumberedModel):
+class Element(Numbered, models.Model):
     TYPES = (
         ('text', 'Tekst element (geeft alleen tekst weer)'),
         ('photo', 'Foto element (geeft foto’s weer)'),
         ('video', 'Video element (geeft een video weer)'),
     )
-    project = models.ForeignKey('Project', related_name='elements')
+    project = models.ForeignKey('Project', related_name='elements', on_delete=models.CASCADE)
     position = models.PositiveIntegerField('positie', blank=True)
     type = models.CharField(max_length=16, choices=TYPES)
     video = EmbedVideoField(help_text="Plak hier een YouTube of Vimeo link", blank=True)
@@ -53,8 +53,8 @@ class Element(NumberedModel):
         ordering = ['position']
         verbose_name_plural = 'elementen'
 
-class Photo(NumberedModel):
-    element = models.ForeignKey('Element', related_name='photos')
+class Photo(Numbered, models.Model):
+    element = models.ForeignKey('Element', related_name='photos', on_delete=models.CASCADE)
     position = models.PositiveIntegerField('positie', blank=True)
     image = models.ImageField('afbeelding', blank=True)
 

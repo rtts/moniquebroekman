@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.utils.html import strip_tags
 from django.shortcuts import redirect
 from django.utils.safestring import mark_safe
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.forms import CheckboxSelectMultiple
 from portfolio.models import *
 

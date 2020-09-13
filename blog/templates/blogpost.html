@@ -7,6 +7,8 @@
 
     {% include 'include/blogpost.html' %}
 
+    {% comment %}
+    <div class="spacer"></div>
     <div id="disqus_thread"></div>
     <script>
       var disqus_config = function () {
@@ -21,6 +23,7 @@
           (d.head || d.body).appendChild(s);
       })();
     </script>
+    {% endcomment %}
 
   </div>
 

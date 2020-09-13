@@ -5,6 +5,10 @@ $sans: Quicksand;
 
 @import url(https://fonts.googleapis.com/css?family=Quicksand);
 
+div.spacer {
+  height: 2rem;
+}
+
 body {
   margin: 0 5%;
 }
@@ -203,7 +207,8 @@ a.more {
 
 div.page {
   margin: 32px 0;
-  width: 80%;
+  // width: 80%;
+  max-width: 800px;
 
   img {
   /* Cancelled by Monique's request
@@ -217,6 +222,7 @@ div.page {
   }
 
   iframe {
+    width: 100%;
     max-width: 120%;
   }
 }

@@ -1,4 +1,8 @@
-@import url(http://fonts.googleapis.com/css?family=Quicksand);
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Quicksand);
+div.spacer {
+  height: 2rem; }
+
 body {
   margin: 0 5%; }
 
@@ -146,50 +150,69 @@ a.more {
 
 div.page {
   margin: 32px 0;
-  width: 80%; }
+  max-width: 800px; }
   div.page img {
-   /* Cancelled by Monique's request
-     width: 100% !important;
-     height: auto !important;
-  */
+    /* Cancelled by Monique's request
+    width: 100% !important;
+    height: auto !important;
+ */
     box-sizing: border-box;
     max-width: 120%;
     height: auto !important; }
+  div.page iframe {
+    width: 100%;
+    max-width: 120%; }
 
 div.element {
   border-bottom: 1px solid #bbb;
   padding: 2em 0; }
   div.element p {
     max-width: 700px; }
-  div.element div.slider {
-    padding: 0px;
-    margin: 0px;
-    border: 1px solid #bbb; }
-    div.element div.slider div.photo:focus {
-      outline: none; }
-    div.element div.slider div.photo {
-      margin: 10px;
-      height: 80vh; }
-      div.element div.slider div.photo img {
-        display: inline-block;
-        max-height: 100%;
-        max-width: 100%;
-        height: auto;
-        width: auto; }
-  div.element div.video {
-    position: relative;
-    width: 70%;
-    height: 0px;
-    padding-bottom: 45%; }
-    div.element div.video iframe {
-      width: 100% !important;
-      height: 100% !important;
-      position: absolute;
-      left: 0px;
-      top: 0px; }
-  div.element .slick-prev:before,
-  div.element .slick-next:before {
-    color: black !important; }
+
+div.slider {
+  padding: 0px;
+  margin: 0px;
+  border: 1px solid #bbb; }
+  div.slider div.photo:focus {
+    outline: none; }
+  div.slider div.photo {
+    margin: 10px;
+    height: 80vh; }
+    div.slider div.photo img {
+      display: inline-block;
+      max-height: 100%;
+      max-width: 100%;
+      height: auto;
+      width: auto; }
+
+div.video {
+  position: relative;
+  width: 70%;
+  height: 0px;
+  padding-bottom: 45%; }
+  div.video iframe {
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute;
+    left: 0px;
+    top: 0px; }
+
+.slick-prev:before,
+.slick-next:before {
+  color: black !important; }
+
+ul.blog_index {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1em; }
+  ul.blog_index li {
+    display: inline-block; }
+  ul.blog_index li:after {
+    content: '–';
+    margin: 0 .5em; }
+  ul.blog_index li:last-child:after {
+    content: ''; }
 
 body, input {
   font-size: 14px;
@@ -260,4 +283,4 @@ pre {
   color: #eee;
   padding: 10px 22px; }
 
-/*# sourceMappingURL=main8.css.map */
+/*# sourceMappingURL=main.scss.css.map */

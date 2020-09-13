@@ -1,8 +1,8 @@
 from django.db import models
 from ckeditor.fields import RichTextField
-from numberedmodel.models import NumberedModel
+from cms.models import Numbered
 
-class Page(NumberedModel):
+class Page(Numbered, models.Model):
     position = models.PositiveIntegerField('positie', blank=True)
     page_title = models.CharField('titel', max_length=255)
     short_name = models.SlugField('verkorte naam', help_text='deze naam wordt gebruikt in de URL', unique=True)
