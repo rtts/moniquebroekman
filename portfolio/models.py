@@ -1,7 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from embed_video.fields import EmbedVideoField
-from cms.models import Numbered
+from cms.mixins import Numbered
 
 class Category(Numbered, models.Model):
     position = models.PositiveIntegerField('positie', blank=True)

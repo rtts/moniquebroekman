@@ -3,7 +3,7 @@ from django.db import models
 from django.urls import reverse
 from ckeditor.fields import RichTextField
 from embed_video.fields import EmbedVideoField
-from cms.models import Numbered
+from cms.mixins import Numbered
 
 class Blog(models.Model):
     title = models.CharField('titel', max_length=255)

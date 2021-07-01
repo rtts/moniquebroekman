@@ -1,6 +1,6 @@
 from django.db import models
 from ckeditor.fields import RichTextField
-from cms.models import Numbered
+from cms.mixins import Numbered
 
 class Page(Numbered, models.Model):
     position = models.PositiveIntegerField('positie', blank=True)
