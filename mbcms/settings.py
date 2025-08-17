@@ -3,13 +3,13 @@ PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 DEBUG = 'runserver' in sys.argv
 
-ADMINS               = [('jj', 'jj@returntothesource.nl')]
+ADMINS               = [('jj', 'jj@rtts.eu')]
 SERVER_EMAIL         = 'moniquebroekman@rtts.eu'
 MANAGERS             = ADMINS
 ROOT_URLCONF         = 'mbcms.urls'
 WSGI_APPLICATION     = 'mbcms.wsgi.application'
 SESSION_SERIALIZER   = 'django.contrib.sessions.serializers.JSONSerializer'
-SECRET_KEY           = 'ml$$+w*5#+n%f^1ifmxaixk^^j7a2#7)gk%3f7-tl1)cvwxg_+'
+SECRET_KEY           = 'ml$$+w*5#+n%f^1ifmxaixk^^j7a2#7)gk%3f7-tl1)cvwxg_+'  # revoked
 STATIC_ROOT          = '/srv/moniquebroekman/static'
 STATIC_URL           = "/static/"
 STATICFILES_DIRS     = [os.path.join(PROJECT_DIR, 'static')]
